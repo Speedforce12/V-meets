@@ -30,3 +30,30 @@ export const navElement = [
     href: "/personal",
   },
 ];
+
+export const meetingCard = [
+  {
+    id: 1,
+    title: "New Meeting",
+    description: "Set up a new meeting",
+    icon: "/icons/personal.svg",
+  },
+  {
+    id: 2,
+    title: "Join Meeting",
+    description: "Join via invitation link",
+    icon: "/icons/join.svg",
+  },
+  {
+    id: 3,
+    title: "Schedule Meeting",
+    description: "Schedule a new meeting",
+    icon: "/icons/upcoming.svg",
+  },
+  {
+    id: 4,
+    title: "Video Recording",
+    description: "View all recordings",
+    icon: "/icons/recording.svg",
+  },
+];
