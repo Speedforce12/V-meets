@@ -3,6 +3,8 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import ModalProvider from "@/providers/modal-provider";
+import StreamClientProvider from "@/providers/StreamClientProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,8 +31,11 @@ export default function RootLayout({ children }) {
       }}>
       <html lang='en'>
         <body className={inter.className}>
-          <ModalProvider />
-          {children}
+          <StreamClientProvider>
+            <ModalProvider />
+            <Toaster />
+            {children}
+          </StreamClientProvider>
         </body>
       </html>
     </ClerkProvider>

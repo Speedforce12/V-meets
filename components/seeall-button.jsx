@@ -8,11 +8,10 @@ const SeeAllButton = () => {
   const router = useRouter();
   return (
     <Button
-      asChild
       variant='ghost'
-      className='hover:bg-transparent hover:text-white/60 cursor-pointer'
+      className='hover:bg-transparent hover:text-white/60 cursor-pointer text-sm text-white'
       onClick={() => router.push("/upcoming")}>
-      <span className='text-sm'>See all</span>
+      See all
     </Button>
   );
 };

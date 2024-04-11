@@ -3,7 +3,7 @@ import MeetingCard from "@/components/meeting-card";
 import SeeAllButton from "@/components/seeall-button";
 import UpcomingMeetingCard from "@/components/upcoming-card/upcoming-meeting-card";
 import { meetingCard } from "@/constant/constant";
-import Link from "next/link";
+
 
 export default function Home() {
   return (
