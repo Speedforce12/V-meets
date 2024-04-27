@@ -37,7 +37,8 @@ const StreamClientProvider = ({ children }) => {
         .catch((error) => console.error(`Couldn't disconnect user`, error));
       setStreamClient(undefined);
     };
-  }, [apiKey, isLoaded, user]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [apiKey, isLoaded, user?.id]);
 
   if (!streamClient) return <Spinner />;
 

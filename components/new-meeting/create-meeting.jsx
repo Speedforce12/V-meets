@@ -11,6 +11,7 @@ import { nanoid } from "nanoid";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/useModal";
+import Spinner from "../spinner";
 
 const CreateMeetingForm = ({ setCall, isInstantMeeting }) => {
   const [description, setDescription] = useState("");
@@ -55,6 +56,8 @@ const CreateMeetingForm = ({ setCall, isInstantMeeting }) => {
       isClose();
     }
   };
+
+  if (!client) return <Spinner />;
 
   return (
     <form className='space-y-5' onSubmit={handleSubmit}>

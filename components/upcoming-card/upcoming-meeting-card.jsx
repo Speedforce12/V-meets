@@ -24,17 +24,16 @@ const UpcomingMeetingCard = () => {
           />
         </CardTitle>
         <CardDescription className='space-y-2'>
-          <div className='text-white font-semibold text-lg line-clamp-5'>
+          <span className='text-white font-semibold text-lg line-clamp-5'>
             Team Sync: Sprint Planning & Updates
-          </div>
+          </span>
 
-          <div className='text-white/70 font-semibold text-xs'>
+          <span className='text-white/70 font-semibold text-xs'>
             April 9, 2024 - 12:27 AM
-          </div>
+          </span>
         </CardDescription>
       </CardHeader>
-      <CardContent>
-      </CardContent>
+      <CardContent></CardContent>
       <CardFooter className='justify-between'>
         <Avatars />
         <CardActions />
