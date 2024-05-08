@@ -49,6 +49,8 @@ const CreateMeetingForm = ({ setCall, isInstantMeeting }) => {
             router.push(`/meeting/${call.id}`);
           }
         });
+
+      toast.success("Meeting Created");
     } catch (error) {
       console.log(error);
       toast.error("Failed to create meeting");

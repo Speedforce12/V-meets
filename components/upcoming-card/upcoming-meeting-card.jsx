@@ -9,8 +9,9 @@ import {
 import Image from "next/image";
 import CardActions from "./card-actions";
 import Avatars from "./avatars";
+import { formatTime } from "@/lib/utils";
 
-const UpcomingMeetingCard = () => {
+const CallGroupCard = ({meeting}) => {
   return (
     <Card className='border-0 bg-[#1C1F2E]'>
       <CardHeader>
@@ -25,22 +26,22 @@ const UpcomingMeetingCard = () => {
         </CardTitle>
         <CardDescription className='space-y-2'>
           <span className='text-white font-semibold text-lg line-clamp-5'>
-            Team Sync: Sprint Planning & Updates
+            {meeting.state?.custom?.description || "No description"}
           </span>
 
           <span className='text-white/70 font-semibold text-xs'>
-            April 9, 2024 - 12:27 AM
+            {formatTime(meeting.state?.startsAt).toLocaleString()}
           </span>
         </CardDescription>
       </CardHeader>
       <CardContent></CardContent>
-      <CardFooter className='justify-between'>
+      <CardFooter className='justify-between '>
         <Avatars />
+
         <CardActions />
       </CardFooter>
     </Card>
   );
 };
 
-export default UpcomingMeetingCard;
-3;
+export default CallGroupCard;

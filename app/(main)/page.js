@@ -1,7 +1,7 @@
 import Banner from "@/components/Banner";
 import MeetingCard from "@/components/meeting-card";
 import SeeAllButton from "@/components/seeall-button";
-import UpcomingMeetingCard from "@/components/upcoming-card/upcoming-meeting-card";
+import CallGroupCard from "@/components/upcoming-card/upcoming-meeting-card";
 import { meetingCard } from "@/constant/constant";
 
 
@@ -24,8 +24,8 @@ export default function Home() {
         </div>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
-          <UpcomingMeetingCard />
-          <UpcomingMeetingCard />
+          <CallGroupCard />
+          <CallGroupCard />
         </div>
       </div>
     </main>

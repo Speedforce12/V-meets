@@ -1,9 +1,15 @@
-import React from 'react'
+import CallGroups from "@/components/call-groups";
 
 const UpcomingPage = () => {
   return (
-    <div>UpcomingPage</div>
-  )
-}
+    <section className='h-full flex flex-col'>
+      <h1 className='font-semibold text-2xl tracking-tight'>
+        Upcoming Meetings
+      </h1>
 
-export default UpcomingPage
+      <CallGroups type="upcoming"/>
+    </section>
+  );
+};
+
+export default UpcomingPage;
