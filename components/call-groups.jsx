@@ -4,6 +4,7 @@ import useGetCalls from "@/hooks/useGetCalls";
 import Spinner from "./spinner";
 import { useEffect, useState } from "react";
 import CallGroupCard from "./upcoming-card/upcoming-meeting-card";
+import { getFirstTwoUpcomingMeetings } from "@/lib/utils";
 
 const CallGroups = ({ type }) => {
   const { endedCalls, isLoading, recordings, upcomingCalls } = useGetCalls();
@@ -18,7 +19,10 @@ const CallGroups = ({ type }) => {
         return endedCalls;
 
       case "recording":
-        recorded;
+        return recorded;
+
+      case "homepage":
+        return upcomingCalls;
 
       default:
         return [];
@@ -60,8 +64,6 @@ const CallGroups = ({ type }) => {
 
   const calls = getCalls();
 
-  console.log("call groups ", calls);
-
   if (!calls)
     return (
       <div className=' text-white/70 flex items-center h-full justify-center text-2xl font-semibold 🥲'>
@@ -69,11 +71,23 @@ const CallGroups = ({ type }) => {
       </div>
     );
 
-  return (
+  return type === "homepage" ? (
     <div className='grid grid-cols-1 xl:grid-cols-2 gap-3 my-5'>
       {calls &&
         calls.length > 0 &&
-        calls.map((meeting) => <CallGroupCard key={meeting.id} meeting={meeting} />)}
+        calls
+          .splice(0, 2)
+          .map((meeting) => (
+            <CallGroupCard key={meeting.id} meeting={meeting} />
+          ))}
+    </div>
+  ) : (
+    <div className='grid grid-cols-1 xl:grid-cols-2 gap-3 my-5 pb-6'>
+      {calls &&
+        calls.length > 0 &&
+        calls.map((meeting) => (
+          <CallGroupCard key={meeting.id} meeting={meeting} />
+        ))}
     </div>
   );
 };

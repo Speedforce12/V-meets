@@ -9,11 +9,11 @@ import Spinner from "@/components/spinner";
 const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
 const StreamClientProvider = ({ children }) => {
-  const [streamClient, setStreamClient] = useState();
   const { isLoaded, user } = useUser();
+  const [streamClient, setStreamClient] = useState(null);
 
   useEffect(() => {
-    if (!isLoaded || !user) return;
+    if (!isLoaded) return;
     if (!API_KEY) throw new Error("Stream API key is missing");
 
     const client = new StreamVideoClient({
@@ -21,13 +21,18 @@ const StreamClientProvider = ({ children }) => {
       user: {
         id: user?.id,
         image: user?.imageUrl,
-        name: user?.firstName || user?.username || user?.id,
+        name: user?.username || user?.id,
       },
       tokenProvider,
     });
 
     setStreamClient(client);
-  }, [user, isLoaded]);
+
+    return () => {
+      client.disconnectUser();
+      setStreamClient(null);
+    };
+  }, [user?.id, user?.username, user?.imageUrl, isLoaded]);
 
   if (!streamClient) return <Spinner />;
 

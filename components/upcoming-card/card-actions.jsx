@@ -1,19 +1,35 @@
-import React from "react";
-import { Button } from "../ui/button";
-import { Copy } from "lucide-react";
+"use client";
 
-const CardActions = () => {
+import { absoluteUrl } from "@/lib/utils";
+import CopyButton from "../buttons/copy-button";
+import { toast } from "sonner";
+import StartMeetingButton from "../buttons/start-meeting-button";
+import { useRouter } from "next/navigation";
+
+const CardActions = ({ callId }) => {
+  const router = useRouter();
+
+  const meetingLink = absoluteUrl(callId);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(meetingLink);
+
+      toast.success("Meeting Link copied!");
+    } catch (err) {
+      toast.error("Failed to copy the meeting link");
+      console.error("Failed to copy: ");
+    }
+  };
+
+  const handleStartCall = () => {
+    router.push(meetingLink);
+  };
+
   return (
     <div className='flex items-center space-x-2'>
-      <Button
-        className='bg-[#0E78F9] text-white hover:bg-[#0E78F9] font-semibold'
-        size='sm'>
-        Start
-      </Button>
-      <Button className='space-x-2 bg-[#11131f]'>
-        <Copy size={20} className='mr-2' />
-        Copy Invitation
-      </Button>
+      <StartMeetingButton handleStartCall={handleStartCall} />
+      <CopyButton onCopy={handleCopy} />
     </div>
   );
 };

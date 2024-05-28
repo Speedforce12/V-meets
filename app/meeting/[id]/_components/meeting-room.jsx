@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import MeetingOptions from "./meeting-options";
 import { Encode_Sans } from "next/font/google";
+import EndCallButton from "@/components/buttons/end-call";
 
 const MeetingRoom = () => {
   const { useCallCallingState, useParticipantCount } = useCallStateHooks();
@@ -56,6 +57,8 @@ const MeetingRoom = () => {
         <CallControls onLeave={() => router.push(`/`)} />
 
         <MeetingOptions setLayout={setLayout} />
+
+        <EndCallButton/>
       </div>
     </section>
   );

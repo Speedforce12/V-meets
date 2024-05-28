@@ -11,7 +11,10 @@ import CardActions from "./card-actions";
 import Avatars from "./avatars";
 import { formatTime } from "@/lib/utils";
 
-const CallGroupCard = ({meeting}) => {
+const CallGroupCard = ({ meeting }) => {
+  
+  console.log("CallGroupCard", meeting.id);
+
   return (
     <Card className='border-0 bg-[#1C1F2E]'>
       <CardHeader>
@@ -26,19 +29,19 @@ const CallGroupCard = ({meeting}) => {
         </CardTitle>
         <CardDescription className='space-y-2'>
           <span className='text-white font-semibold text-lg line-clamp-5'>
-            {meeting.state?.custom?.description || "No description"}
+            {meeting?.state?.custom?.description || "No description"}
           </span>
 
           <span className='text-white/70 font-semibold text-xs'>
-            {formatTime(meeting.state?.startsAt).toLocaleString()}
+            {formatTime(meeting?.state?.startsAt).toLocaleString()}
           </span>
         </CardDescription>
       </CardHeader>
       <CardContent></CardContent>
-      <CardFooter className='justify-between '>
+      <CardFooter className='justify-between'>
         <Avatars />
 
-        <CardActions />
+        <CardActions callId={meeting.id} />
       </CardFooter>
     </Card>
   );
