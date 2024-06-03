@@ -4,7 +4,7 @@ import { Copy } from "lucide-react";
 
 const CopyButton = ({ onCopy }) => {
   return (
-    <Button className='space-x-2 bg-[#11131f]' onClick={onCopy}>
+    <Button className='space-x-2 bg-[#232845]' onClick={onCopy}>
       <Copy size={20} className='mr-2' />
       Copy Invitation
     </Button>

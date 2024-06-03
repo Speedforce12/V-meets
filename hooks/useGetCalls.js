@@ -8,6 +8,7 @@ const useGetCalls = () => {
   const { user } = useUser();
   const [calls, setCalls] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [nextPage, setNextPage] = useState();
 
   let client = useStreamVideoClient();
 
@@ -17,7 +18,7 @@ const useGetCalls = () => {
 
       try {
         setIsLoading(true);
-        const { calls } = await client.queryCalls({
+        const { calls, next } = await client.queryCalls({
           filter_conditions: {
             starts_at: {
               $exists: true,
@@ -33,6 +34,7 @@ const useGetCalls = () => {
         console.log(calls);
 
         setCalls(calls);
+        setNextPage(next);
       } catch (error) {
         console.log(error);
       } finally {
@@ -58,6 +60,7 @@ const useGetCalls = () => {
     upcomingCalls,
     recordings: calls,
     isLoading,
+    nextPage,
   };
 };
 

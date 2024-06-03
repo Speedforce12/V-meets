@@ -13,7 +13,7 @@ const StreamClientProvider = ({ children }) => {
   const [streamClient, setStreamClient] = useState(null);
 
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!isLoaded || !user) return;
     if (!API_KEY) throw new Error("Stream API key is missing");
 
     const client = new StreamVideoClient({
@@ -32,7 +32,7 @@ const StreamClientProvider = ({ children }) => {
       client.disconnectUser();
       setStreamClient(null);
     };
-  }, [user?.id, user?.username, user?.imageUrl, isLoaded]);
+  }, [user, isLoaded]);
 
   if (!streamClient) return <Spinner />;
 

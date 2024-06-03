@@ -4,7 +4,7 @@ import useGetCalls from "@/hooks/useGetCalls";
 import Spinner from "./spinner";
 import { useEffect, useState } from "react";
 import CallGroupCard from "./upcoming-card/upcoming-meeting-card";
-import { getFirstTwoUpcomingMeetings } from "@/lib/utils";
+
 
 const CallGroups = ({ type }) => {
   const { endedCalls, isLoading, recordings, upcomingCalls } = useGetCalls();
